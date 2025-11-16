@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+:root {
+  /* Warna diambil dari identitas sekolah (hijau dan kuning/emas) */
+  --primary-color: #00796B; /* Teal - Hijau Kebiruan Khas Kesehatan */
+  --secondary-color: #004D40;
+  --accent-color: #FFB300; /* Amber - Aksen Emas/Kuning */
+}
+
+body {
+  /* Mengganti Font ke Poppins */
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Kustomisasi Tailwind CSS */
+.bg-primary {
+  background-color: var(--primary-color);
+}
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+.text-primary {
+  color: var(--primary-color);
+}
+.text-accent {
+  color: var(--accent-color);
+}
+.border-primary {
+  border-color: var(--primary-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+ 
+.btn-secondary {
+  background-color: var(--accent-color);
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #FFC107;
+}
+
+.section-divider {
+  width: 100px;
+  height: 3px;
+  background: var(--accent-color);
+  margin: 1.5rem auto;
+}
+
+/* Hero Slider Styles */
+.hero-slider {
+  height: 70vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  padding: 1.5rem;
+}
+
+.nav-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.nav-dot.active {
+  background: var(--accent-color);
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  background: #222;
+}
+
+@media (max-width: 768px) {
+  .hero-slider {
+    height: 50vh;
+  }
+}
