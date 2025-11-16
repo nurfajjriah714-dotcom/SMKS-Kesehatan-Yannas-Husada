@@ -1,1099 +1,767 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SMA IT Nusantara - Sekolah Islam Berbasis Teknologi</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-    <style>
-      :root {
-        --primary-color: #2e7d32;
-        --secondary-color: #1b5e20;
-        --accent-color: #4caf50;
-      }
-
-      body {
-        font-family: "Segoe UI", system-ui, sans-serif;
-        scroll-behavior: smooth;
-      }
-
-      .hero-slider {
-        height: 70vh;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .slide {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-      }
-
-      .slide.active {
-        opacity: 1;
-      }
-
-      .slide-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.47);
-        color: white;
-        padding: 1.5rem;
-      }
-
-      .nav-dots {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 10px;
-      }
-
-      .nav-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.5);
-        cursor: pointer;
-      }
-
-      .nav-dot.active {
-        background: var(--accent-color);
-      }
-
-      .card-hover:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .bg-primary {
-        background-color: var(--primary-color);
-      }
-
-      .bg-secondary {
-        background-color: var(--secondary-color);
-      }
-
-      .text-accent {
-        color: var(--accent-color);
-      }
-
-      .btn-primary {
-        background-color: var(--primary-color);
-        color: white;
-        transition: all 0.3s ease;
-      }
-
-      .btn-primary:hover {
-        background-color: var(--secondary-color);
-      }
-
-      .section-divider {
-        width: 100px;
-        height: 3px;
-        background: var(--accent-color);
-        margin: 1.5rem auto;
-      }
-
-      footer {
-        background: #222;
-      }
-
-      @media (max-width: 768px) {
-        .hero-slider {
-          height: 50vh;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- Navbar -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-      <div
-        class="container mx-auto px-4 py-3 flex justify-between items-center"
-      >
-        <!-- Logo -->
-        <div class="flex items-center">
-          <img
-            src="image/imglogo.png"
-            alt="Logo SMA IT Telkom"
-            class="mr-3"
-            width="50"
-            height="50"
-          />
-          <div>
-            <h1 class="text-lg font-bold text-gray-800">SMA IT Nusantara</h1>
-            <p class="text-xs text-gray-600">Islamic Technology School</p>
-          </div>
-        </div>
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex space-x-8">
-          <a href="#home" class="text-gray-800 hover:text-green-700 font-medium"
-            >Beranda</a
-          >
-          <a
-            href="#profile"
-            class="text-gray-800 hover:text-green-700 font-medium"
-            >Profil</a
-          >
-          <a
-            href="#program"
-            class="text-gray-800 hover:text-green-700 font-medium"
-            >Program</a
-          >
-          <a
-            href="#facility"
-            class="text-gray-800 hover:text-green-700 font-medium"
-            >Fasilitas</a
-          >
-          <a
-            href="#contact"
-            class="text-gray-800 hover:text-green-700 font-medium"
-            >Kontak</a
-          >
-        </div>
-        <!-- Hamburger Icon -->
-        <button
-          id="menu-toggle"
-          class="md:hidden text-gray-800 focus:outline-none"
-        >
-          <i class="fas fa-bars text-xl"></i>
-        </button>
-      </div>
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
-        <a
-          href="#home"
-          class="block py-2 text-gray-800 hover:text-green-700 font-medium"
-          >Beranda</a
-        >
-        <a
-          href="#profile"
-          class="block py-2 text-gray-800 hover:text-green-700 font-medium"
-          >Profil</a
-        >
-        <a
-          href="#program"
-          class="block py-2 text-gray-800 hover:text-green-700 font-medium"
-          >Program</a
-        >
-        <a
-          href="#facility"
-          class="block py-2 text-gray-800 hover:text-green-700 font-medium"
-          >Fasilitas</a
-        >
-        <a
-          href="#contact"
-          class="block py-2 text-gray-800 hover:text-green-700 font-medium"
-          >Kontak</a
-        >
-      </div>
-    </nav>
-    <!-- JavaScript Toggle Menu Mobile -->
-    <script>
-      document
-        .getElementById("menu-toggle")
-        .addEventListener("click", function () {
-          const mobileMenu = document.getElementById("mobile-menu");
-          mobileMenu.classList.toggle("hidden");
-        });
-    </script>
-
-    <!-- Hero Slider -->
-    <section id="home" class="hero-slider">
-      <!-- Slide 1 -->
-      <div class="slide active">
-        <img
-          src="image/banner1.jpg"
-          alt="Gedung sekolah SMA IT Nusantara dengan arsitektur modern dan taman hijau"
-          class="w-full h-full object-cover"
-        />
-        <div class="slide-content">
-          <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">
-              SMA IT Nusantara
-            </h2>
-            <p class="text-lg md:text-xl mb-6">
-              Mencerdaskan Generasi Islami Berbasis Teknologi
-            </p>
-            <a
-              href="#program"
-              class="btn-primary px-6 py-3 rounded-full font-medium inline-block"
-              >Lihat Program Kami</a
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="slide">
-        <img
-          src="image/banner2.jpg"
-          alt="Siswa SMA IT Nusantara sedang belajar di laboratorium komputer dengan peralatan modern"
-          class="w-full h-full object-cover"
-        />
-        <div class="slide-content">
-          <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">
-              Pendidikan Berkualitas
-            </h2>
-            <p class="text-lg md:text-xl mb-6">
-              Gabungan kurikulum nasional, pendidikan Islam, dan teknologi
-              mutakhir
-            </p>
-            <a
-              href="#profile"
-              class="btn-primary px-6 py-3 rounded-full font-medium inline-block"
-              >Tentang Kami</a
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="slide">
-        <img
-          src="image/banner3.jpg"
-          alt="Kegiatan ekstrakurikuler robotika di SMA IT Nusantara dengan siswa sedang merakit robot"
-          class="w-full h-full object-cover"
-        />
-        <div class="slide-content">
-          <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">
-              Pengembangan Potensi
-            </h2>
-            <p class="text-lg md:text-xl mb-6">
-              Berbagai program ekstrakurikuler untuk mengasah bakat siswa
-            </p>
-            <a
-              href="#facility"
-              class="btn-primary px-6 py-3 rounded-full font-medium inline-block"
-              >Lihat Fasilitas</a
-            >
-          </div>
-        </div>
-      </div>
-
-      <div class="nav-dots">
-        <div class="nav-dot active" data-slide="0"></div>
-        <div class="nav-dot" data-slide="1"></div>
-        <div class="nav-dot" data-slide="2"></div>
-      </div>
-    </section>
-
-    <!-- Profile Section -->
-    <section id="profile" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12" data-aos="fade-up">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
-            Profil Sekolah
-          </h2>
-          <div
-            class="section-divider mx-auto my-4 w-24 h-1 bg-blue-600 rounded-full"
-          ></div>
-          <p class="text-gray-600 max-w-3xl mx-auto">
-            SMA IT Nusantara adalah sekolah menengah atas berbasis Islam dengan
-            penekanan pada penguasaan teknologi informasi dan komunikasi.
-          </p>
-        </div>
-
-        <div class="flex flex-col md:flex-row gap-8 items-center">
-          <!-- gambar lama
-          <div class="md:w-1/2" data-aos="fade-right">
-            <div class="relative group perspective">
-              <div
-                class="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d"
-              >
-                <div class="absolute inset-0 backface-hidden">
-                  <img
-                    src="image/tentang.webp"
-                    alt="Visi Misi SMA IT Nusantara - Sekolah dengan gedung modern dan taman hijau"
-                    class="w-full rounded-lg shadow-lg"
-                  />
-                </div>
-                <div
-                  class="absolute inset-0 backface-hidden rotate-y-180 flex items-center justify-center bg-green-600 rounded-lg shadow-lg"
-                >
-                  <img
-                    src="image/logo.png"
-                    alt="Logo SMA IT Nusantara"
-                    class="w-32 h-32 object-contain mb-4"
-                  />
-                  <p class="text-white text-xl font-semibold text-center mt-2">
-                    SMA IT Nusantara
-                  </p>
-                </div>
-              </div>
-            </div>
-            <style>
-              .perspective {
-                perspective: 1000px;
-              }
-
-              .transform-style-preserve-3d {
-                transform-style: preserve-3d;
-              }
-
-              .backface-hidden {
-                backface-visibility: hidden;
-              }
-
-              .rotate-y-180 {
-                transform: rotateY(180deg);
-              }
-
-              /* ✅ Fix: hover ke elemen yang benar */
-              .group:hover .transform-style-preserve-3d {
-                transform: rotateY(180deg);
-              }
-            </style>
-          </div>-->
-
-          <div
-            class="w-full mb-8 md:w-1/2 md:mb-0 md:pr-8 flex justify-center"
-            data-aos="fade-right"
-          >
-            <div
-              class="relative w-full h-[300px] sm:h-[350px] md:h-[400px] [perspective:1000px]"
-            >
-              <div
-                class="w-full h-full transition-transform duration-700 transform-style-preserve-3d hover:rotate-y-180"
-              >
-                <div class="absolute w-full h-full backface-hidden">
-                  <img
-                    src="image/tentang.webp"
-                    alt="alt2"
-                    class="rounded-xl shadow-xl w-full h-full object-cover"
-                  />
-                </div>
-                <div
-                  class="absolute w-full h-full rotate-y-180 backface-hidden rounded-xl shadow-xl overflow-hidden"
-                >
-                  <img
-                    src="image/tentang.webp"
-                    alt="alt"
-                    class="w-full h-full object-cover"
-                  />
-                  <div
-                    class="absolute inset-0 bg-black/50 flex items-center justify-center px-4"
-                  >
-                    <p
-                      class="text-white font-semibold text-xl text-center drop-shadow-lg leading-relaxed"
-                    >
-                      Sekolah IT Nusantara<br />dengan kurikulum modern dan
-                      religius!
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <style>
-              /* efek flip gambar */
-              .transform-style-preserve-3d {
-                transform-style: preserve-3d;
-              }
-              .backface-hidden {
-                backface-visibility: hidden;
-              }
-              .rotate-y-180 {
-                transform: rotateY(180deg);
-              }
-              .hover\:rotate-y-180:hover {
-                transform: rotateY(180deg);
-              }
-            </style>
-          </div>
-
-          <div class="md:w-1/2" data-aos="fade-left">
-            <h3 class="text-2xl font-bold text-gray-800 mb-4">Visi</h3>
-            <p class="text-gray-700 mb-6">
-              Menjadi lembaga pendidikan unggulan yang mencetak generasi muslim
-              berkualitas, berakhlak mulia, dan menguasai teknologi informasi
-              dan komunikasi.
-            </p>
-
-            <h3 class="text-2xl font-bold text-gray-800 mb-4">Misi</h3>
-            <ul class="text-gray-700 space-y-3">
-              <li
-                class="flex items-start"
-                data-aos="fade-up"
-                data-aos-delay="100"
-              >
-                <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
-                <span
-                  >Menyelenggarakan pendidikan berbasis nilai-nilai Islam</span
-                >
-              </li>
-              <li
-                class="flex items-start"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
-                <span
-                  >Mengembangkan kompetensi siswa dalam teknologi
-                  informasi</span
-                >
-              </li>
-              <li
-                class="flex items-start"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
-                <span>Membentuk karakter siswa yang berakhlak mulia</span>
-              </li>
-              <li
-                class="flex items-start"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
-                <span
-                  >Menyiapkan lulusan yang mampu bersaing di era digital</span
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Program Section -->
-    <section id="program" class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12" data-aos="fade-up" data-aos-delay="100">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
-            Program Unggulan
-          </h2>
-          <div
-            class="section-divider mx-auto my-4 w-24 h-1 bg-blue-600 rounded-full"
-          ></div>
-          <p class="text-gray-600 max-w-3xl mx-auto">
-            Berbagai program unggulan yang kami tawarkan untuk pengembangan
-            potensi siswa
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Program 1 -->
-          <div
-            class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:border hover:border-green-600"
-            data-aos="zoom-in"
-            data-aos-delay="100"
-          >
-            <div class="h-48 overflow-hidden">
-              <img
-                src="image/program.webp"
-                alt="Program Tahfizh Quran di SMA IT Nusantara dengan siswa sedang menghafal bersama"
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">
-                Tahfizh Quran
-              </h3>
-              <p class="text-gray-600 mb-4">
-                Program penghafalan Al-Quran dengan target minimal 3 juz selama
-                3 tahun belajar.
-              </p>
-              <a
-                href="#"
-                class="text-green-600 font-medium flex items-center group mt-auto"
-              >
-                Selengkapnya
-                <i
-                  class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-1"
-                ></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Program 2 -->
-          <div
-            class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:border hover:border-green-600"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div class="h-48 overflow-hidden">
-              <img
-                src="image/program2.png"
-                alt="Laboratorium komputer SMA IT Nusantara dengan peralatan modern untuk pembelajaran coding"
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">
-                Teknologi Informasi
-              </h3>
-              <p class="text-gray-600 mb-4">
-                Pembelajaran pemrograman, jaringan komputer, dan pengembangan
-                aplikasi website.
-              </p>
-              <a href="#" class="text-green-600 font-medium flex items-center">
-                Selengkapnya <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Program 3 -->
-          <div
-            class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:border hover:border-green-600"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div class="h-48 overflow-hidden">
-              <img
-                src="image/program3.jpg"
-                alt="Kegiatan robotic club SMA IT Nusantara dengan siswa sedang merancang robot"
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">
-                Robotika & IoT
-              </h3>
-              <p class="text-gray-600 mb-4">
-                Pengembangan kompetensi dalam bidang robotika dan Internet of
-                Things melalui berbagai proyek.
-              </p>
-              <a href="#" class="text-green-600 font-medium flex items-center">
-                Selengkapnya <i class="fas fa-arrow-right ml-2"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Facility Section -->
-    <section id="facility" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12" data-aos="fade-up">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
-            Fasilitas Sekolah
-          </h2>
-          <div
-            class="section-divider mx-auto my-4 w-24 h-1 bg-blue-600 rounded-full"
-          ></div>
-          <p class="text-gray-600 max-w-3xl mx-auto">
-            Fasilitas modern dan lengkap untuk mendukung proses pembelajaran
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Fasilitas 1 -->
-          <div
-            class="bg-white rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-green-100 hover:border hover:border-green-500/30 duration-300 ease-out"
-            data-aos="zoom-in-up"
-          >
-            <div
-              class="text-green-600 text-3xl mr-4 transition-transform duration-300 group-hover:scale-105"
-            >
-              <i class="fas fa-laptop"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">
-                Laboratorium Komputer
-              </h3>
-              <p class="text-gray-600">
-                Ruangan ber-AC dengan perangkat komputer terbaru dan koneksi
-                internet cepat.
-              </p>
-            </div>
-          </div>
-
-          <!-- Fasilitas 2 -->
-          <div
-            class="bg-white rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-green-100 hover:border hover:border-green-500/30 duration-300 ease-out"
-            data-aos="zoom-in-up"
-          >
-            <div
-              class="text-green-600 text-3xl mr-4 transition-transform duration-300 group-hover:scale-105"
-            >
-              <i class="fas fa-mosque"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">Musholla</h3>
-              <p class="text-gray-600">
-                Tempat ibadah yang nyaman dengan fasilitas wudhu yang memadai.
-              </p>
-            </div>
-          </div>
-
-          <!-- Fasilitas 3 -->
-          <div
-            class="bg-white rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-green-100 hover:border hover:border-green-500/30 duration-300 ease-out"
-            data-aos="zoom-in-up"
-          >
-            <div
-              class="text-green-600 text-3xl mr-4 transition-transform duration-300 group-hover:scale-105"
-            >
-              <i class="fas fa-book"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">Perpustakaan</h3>
-              <p class="text-gray-600">
-                Koleksi buku lengkap dengan ruang baca yang nyaman dan sistem
-                digital.
-              </p>
-            </div>
-          </div>
-
-          <!-- Fasilitas 4 -->
-          <div
-            class="bg-white rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-green-100 hover:border hover:border-green-500/30 duration-300 ease-out"
-            data-aos="zoom-in-up"
-          >
-            <div
-              class="text-green-600 text-3xl mr-4 transition-transform duration-300 group-hover:scale-105"
-            >
-              <i class="fas fa-flask"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">
-                Laboratorium Sains
-              </h3>
-              <p class="text-gray-600">
-                Peralatan praktikum lengkap untuk mata pelajaran fisika, kimia,
-                dan biologi.
-              </p>
-            </div>
-          </div>
-
-          <!-- Fasilitas 5 -->
-          <div
-            class="bg-white rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-green-100 hover:border hover:border-green-500/30 duration-300 ease-out"
-            data-aos="zoom-in-up"
-          >
-            <div
-              class="text-green-600 text-3xl mr-4 transition-transform duration-300 group-hover:scale-105"
-            >
-              <i class="fas fa-basketball-ball"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">
-                Lapangan Olahraga
-              </h3>
-              <p class="text-gray-600">
-                Lapangan basket, futsal, dan voli dengan standar kompetisi.
-              </p>
-            </div>
-          </div>
-
-          <!-- Fasilitas 6 -->
-          <div
-            class="bg-white rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-green-100 hover:border hover:border-green-500/30 duration-300 ease-out"
-            data-aos="zoom-in-up"
-          >
-            <div
-              class="text-green-600 text-3xl mr-4 transition-transform duration-300 group-hover:scale-105"
-            >
-              <i class="fas fa-wifi"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">WiFi Area</h3>
-              <p class="text-gray-600">
-                Akses internet nirkabel kecepatan tinggi di seluruh area
-                sekolah.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Galeri Section -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
-            Galeri Kegiatan
-          </h2>
-          <div class="section-divider"></div>
-          <p class="text-gray-600 max-w-3xl mx-auto">
-            Momen-momen berharga di SMA IT Nusantara
-          </p>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <div class="overflow-hidden rounded-lg">
-            <img
-              src="image/galeri1.jpg"
-              alt="Kegiatan outbound siswa SMA IT Nusantara di alam terbuka dengan aktivitas team building"
-              class="w-full h-48 object-cover hover:scale-110 transition duration-300"
-            />
-          </div>
-
-          <div class="overflow-hidden rounded-lg">
-            <img
-              src="image/galeri2.jpg"
-              alt="Siswa SMA IT Nusantara sedang presentasi proyek teknologi di depan kelas"
-              class="w-full h-48 object-cover hover:scale-110 transition duration-300"
-            />
-          </div>
-          <div class="overflow-hidden rounded-lg">
-            <img
-              src="image/galeri3.jpeg"
-              alt="Kegiatan shalat berjamaah di musholla sekolah dengan siswa berbaris rapi"
-              class="w-full h-48 object-cover hover:scale-110 transition duration-300"
-            />
-          </div>
-          <div class="overflow-hidden rounded-lg">
-            <img
-              src="image/galeri4.jpg"
-              alt="Kompetisi robotika antar sekolah dengan siswa SMA IT Nusantara sedang menguji robot"
-              class="w-full h-48 object-cover hover:scale-110 transition duration-300"
-            />
-          </div>
-          <div class="overflow-hidden rounded-lg">
-            <img
-              src="image/galeri5.webp"
-              alt="Kegiatan belajar di laboratorium komputer dengan siswa fokus pada layar monitor"
-              class="w-full h-48 object-cover hover:scale-110 transition duration-300"
-            />
-          </div>
-          <div class="overflow-hidden rounded-lg">
-            <img
-              src="image/galeri6.jpg"
-              alt="Upacara bendera di lapangan sekolah dengan seluruh siswa mengenakan seragam"
-              class="w-full h-48 object-cover hover:scale-110 transition duration-300"
-            />
-          </div>
-          <div class="overflow-hidden rounded-lg">
-            <img
-              src="image/galeri7.jpg"
-              alt="Siswa SMA IT Nusantara menerima penghargaan di sebuah kompetisi teknologi"
-              class="w-full h-48 object-cover hover:scale-110 transition duration-300"
-            />
-          </div>
-        </div>
-
-        <div class="text-center mt-8">
-          <a
-            href="#"
-            class="btn-primary px-6 py-3 rounded-full font-medium inline-block"
-            >Lihat Galeri Lainnya</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- Kontak & Peta Section -->
-    <section id="contact" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
-            Hubungi Kami
-          </h2>
-          <div class="section-divider"></div>
-          <p class="text-gray-600 max-w-3xl mx-auto">
-            Kami siap menjawab pertanyaan Anda tentang SMA IT Nusantara
-          </p>
-        </div>
-
-        <div class="flex flex-col lg:flex-row gap-8">
-          <!-- Form Kontak -->
-          <div class="lg:w-1/2">
-            <div class="bg-white p-8 rounded-lg shadow-md">
-              <h3 class="text-2xl font-bold text-gray-800 mb-6">Kirim Pesan</h3>
-              <form>
-                <div class="mb-4">
-                  <label for="name" class="block text-gray-700 mb-2"
-                    >Nama Lengkap</label
-                  >
-                  <input
-                    type="text"
-                    id="name"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label for="email" class="block text-gray-700 mb-2"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    id="email"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label for="phone" class="block text-gray-700 mb-2"
-                    >Nomor Telepon</label
-                  >
-                  <input
-                    type="tel"
-                    id="phone"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label for="message" class="block text-gray-700 mb-2"
-                    >Pesan</label
-                  >
-                  <textarea
-                    id="message"
-                    rows="4"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  class="btn-primary px-6 py-3 rounded-full font-medium w-full"
-                >
-                  Kirim Pesan
-                </button>
-              </form>
-            </div>
-          </div>
-
-          <!-- Info Kontak & Peta -->
-          <div class="lg:w-1/2 space-y-6">
-            <div class="bg-white p-8 rounded-lg shadow-md">
-              <h3 class="text-2xl font-bold text-gray-800 mb-6">
-                Informasi Kontak
-              </h3>
-              <div class="space-y-4">
-                <div class="flex items-start">
-                  <div class="text-green-600 text-xl mr-4 mt-1">
-                    <i class="fas fa-map-marker-alt"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-gray-800">Alamat</h4>
-                    <p class="text-gray-600">
-                      Jl. Pendidikan No. 123, Medan, Sumatera Utara 20153
-                    </p>
-                  </div>
-                </div>
-                <div class="flex items-start">
-                  <div class="text-green-600 text-xl mr-4 mt-1">
-                    <i class="fas fa-phone-alt"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-gray-800">Telepon</h4>
-                    <p class="text-gray-600">(061) 4567890</p>
-                  </div>
-                </div>
-                <div class="flex items-start">
-                  <div class="text-green-600 text-xl mr-4 mt-1">
-                    <i class="fas fa-envelope"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-gray-800">Email</h4>
-                    <p class="text-gray-600">info@smaittelkommedan.sch.id</p>
-                  </div>
-                </div>
-                <div class="flex items-start">
-                  <div class="text-green-600 text-xl mr-4 mt-1">
-                    <i class="fas fa-clock"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-gray-800">Jam Operasional</h4>
-                    <p class="text-gray-600">Senin-Jumat: 07.30 - 16.00 WIB</p>
-                    <p class="text-gray-600">Sabtu: 08.00 - 12.00 WIB</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Peta Sekolah -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-              <div class="h-80 w-full">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.985459177303!2d98.66753081434599!3d3.585032651498843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303131c157c7e363%3A0xe0ef4a2e7f1c1a9c!2sTelkom%20Indonesia!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid"
-                  width="100%"
-                  height="100%"
-                  style="border: 0"
-                  allowfullscreen=""
-                  loading="lazy"
-                  title="Peta Lokasi SMA IT Nusantara"
-                  aria-label="Peta digital yang menampilkan lokasi SMA IT Nusantara di Jl. Pendidikan No. 123, Medan"
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Tentang Sekolah -->
-          <div>
-            <h3 class="text-xl font-bold mb-4">Tentang Kami</h3>
-            <p class="text-gray-400 mb-4">
-              SMA IT Nusantara adalah sekolah berbasis nilai-nilai Islam dengan
-              fokus pada pengembangan kompetensi teknologi informasi.
-            </p>
-            <div class="flex space-x-4">
-              <a href="#" class="text-gray-400 hover:text-green-500 text-xl">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-green-500 text-xl">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-green-500 text-xl">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-green-500 text-xl">
-                <i class="fab fa-youtube"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Link Cepat -->
-          <div>
-            <h3 class="text-xl font-bold mb-4">Link Cepat</h3>
-            <ul class="space-y-2">
-              <li>
-                <a href="#" class="text-gray-400 hover:text-green-500"
-                  >Pendaftaran Online</a
-                >
-              </li>
-              <li>
-                <a href="#" class="text-gray-400 hover:text-green-500"
-                  >Jadwal Pembelajaran</a
-                >
-              </li>
-              <li>
-                <a href="#" class="text-gray-400 hover:text-green-500"
-                  >Kalender Akademik</a
-                >
-              </li>
-              <li>
-                <a href="#" class="text-gray-400 hover:text-green-500"
-                  >E-Learning</a
-                >
-              </li>
-              <li>
-                <a href="#" class="text-gray-400 hover:text-green-500">Karir</a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Berita Terbaru -->
-          <div>
-            <h3 class="text-xl font-bold mb-4">Berita Terbaru</h3>
-            <div class="space-y-4">
-              <div>
-                <a href="#" class="text-green-500 hover:underline">
-                  Siswa SMA IT Nusantara Juara Kompetisi Robotika Nasional
-                </a>
-                <p class="text-gray-500 text-sm">15 Mei 2023</p>
-              </div>
-              <div>
-                <a href="#" class="text-green-500 hover:underline">
-                  Peluncuran Program Baru: Kelas Intensif Coding
-                </a>
-                <p class="text-gray-500 text-sm">2 April 2023</p>
-              </div>
-              <div>
-                <a href="#" class="text-green-500 hover:underline">
-                  Kegiatan Muharram 1445 H bersama Seluruh Civitas Sekolah
-                </a>
-                <p class="text-gray-500 text-sm">20 Juli 2023</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
-        >
-          <p>&copy; 2025 SMA IT Nusantara. All Rights Reserved.</p>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button
-      id="backToTop"
-      class="fixed bottom-8 right-8 bg-green-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300"
-    >
-      <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        duration: 1100, // durasi animasi 1 detik
-        once: true, // hanya animasi sekali
-      });
-    </script>
-
-    <!-- JavaScript -->
-    <script>
-      // Hero Slider
-      const slides = document.querySelectorAll(".slide");
-      const dots = document.querySelectorAll(".nav-dot");
-      let currentSlide = 0;
-
-      function showSlide(n) {
-        slides.forEach((slide) => slide.classList.remove("active"));
-        dots.forEach((dot) => dot.classList.remove("active"));
-
-        currentSlide = (n + slides.length) % slides.length;
-        slides[currentSlide].classList.add("active");
-        dots[currentSlide].classList.add("active");
-      }
-
-      dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => showSlide(index));
-      });
-
-      // Auto slide change every 4 seconds
-      setInterval(() => {
-        showSlide(currentSlide + 1);
-      }, 4000);
-
-      // Back to Top Button
-      const backToTopBtn = document.getElementById("backToTop");
-
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 300) {
-          backToTopBtn.classList.remove("opacity-0", "invisible");
-        } else {
-          backToTopBtn.classList.add("opacity-0", "invisible");
-        }
-      });
-
-      backToTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
-        });
-      });
-
-      /*
-      // Mobile menu toggle (placeholder - would need implementation)
-      document
-        .querySelector(".md\\:hidden")
-        .addEventListener("click", function () {
-          // Implement mobile menu toggle functionality here
-          console.log("Mobile menu button clicked");
-        }); */
-    </script>
-  </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMKS Kesehatan Yannas Husada - Bangkalan</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <style>
+      :root {
+        /* Warna diambil dari identitas sekolah (hijau dan kuning/emas) */
+        --primary-color: #00796B; /* Teal - Hijau Kebiruan Khas Kesehatan */
+        --secondary-color: #004D40;
+        --accent-color: #FFB300; /* Amber - Aksen Emas/Kuning */
+      }
+
+      body {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      .hero-slider {
+        height: 70vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      .slide-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.55);
+        color: white;
+        padding: 1.5rem;
+      }
+
+      .nav-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+      }
+
+      .nav-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+      }
+
+      .nav-dot.active {
+        background: var(--accent-color);
+      }
+
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .bg-primary {
+        background-color: var(--primary-color);
+      }
+
+      .bg-secondary {
+        background-color: var(--secondary-color);
+      }
+
+      .text-accent {
+        color: var(--accent-color);
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-color);
+      }
+      
+      .btn-secondary {
+        background-color: var(--accent-color);
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background-color: #FFC107;
+      }
+
+      .section-divider {
+        width: 100px;
+        height: 3px;
+        background: var(--accent-color);
+        margin: 1.5rem auto;
+      }
+
+      footer {
+        background: #222;
+      }
+
+      /* Efek Flip */
+      .transform-style-preserve-3d {
+        transform-style: preserve-3d;
+      }
+      .backface-hidden {
+        backface-visibility: hidden;
+      }
+      .rotate-y-180 {
+        transform: rotateY(180deg);
+      }
+      .hover\:rotate-y-180:hover {
+        transform: rotateY(180deg);
+      }
+
+      @media (max-width: 768px) {
+        .hero-slider {
+          height: 50vh;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+        <nav class="bg-white shadow-lg sticky top-0 z-50">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+                <div class="flex items-center">
+                    <img
+            src="image/imglogo.png" 
+            alt="Logo SMKS Kesehatan Yannas Husada"
+            class="mr-3"
+            width="50"
+            height="50"
+          />
+          <div>
+            <h1 class="text-lg font-bold text-gray-800">SMKS KES. YANNAS HUSADA</h1>
+            <p class="text-xs text-gray-600">Bangkalan - Sekolah Unggul Bidang Kesehatan</p>
+          </div>
+        </div>
+                <div class="hidden md:flex space-x-8">
+          <a href="#home" class="text-gray-800 hover:text-teal-700 font-medium"
+            >Beranda</a
+          >
+          <a
+            href="#program"
+            class="text-gray-800 hover:text-teal-700 font-medium"
+            >Program Keahlian</a
+          >
+          <a
+            href="#facility"
+            class="text-gray-800 hover:text-teal-700 font-medium"
+            >Fasilitas</a
+          >
+          <a
+            href="#career"
+            class="text-gray-800 hover:text-teal-700 font-medium"
+            >Kerja Sama & Alumni</a
+          >
+          <a
+            href="#contact"
+            class="text-gray-800 hover:text-teal-700 font-medium"
+            >Kontak PMB</a
+          >
+        </div>
+                <button
+          id="menu-toggle"
+          class="md:hidden text-gray-800 focus:outline-none"
+        >
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+            <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+        <a
+          href="#home"
+          class="block py-2 text-gray-800 hover:text-teal-700 font-medium"
+          >Beranda</a
+        >
+        <a
+          href="#program"
+          class="block py-2 text-gray-800 hover:text-teal-700 font-medium"
+          >Program Keahlian</a
+        >
+        <a
+          href="#facility"
+          class="block py-2 text-gray-800 hover:text-teal-700 font-medium"
+          >Fasilitas</a
+        >
+        <a
+          href="#career"
+          class="block py-2 text-gray-800 hover:text-teal-700 font-medium"
+          >Kerja Sama & Alumni</a
+          >
+        <a
+          href="#contact"
+          class="block py-2 text-gray-800 hover:text-teal-700 font-medium"
+          >Kontak PMB</a
+          >
+      </div>
+    </nav>
+        <script>
+      document
+        .getElementById("menu-toggle")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu");
+          mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+
+        <section id="home" class="hero-slider">
+            <div class="slide active">
+                <img
+          src="WhatsApp Image 2025-11-13 at 13.07.22_628319f1.jpg"
+          alt="Sistem Penerimaan Murid Baru SMKS Kesehatan Yannas Husada Bangkalan"
+          class="w-full h-full object-cover"
+        />
+        <div class="slide-content">
+          <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+              SMKS KESEHATAN YANNAS HUSADA BANGKALAN
+            </h2>
+            <p class="text-lg md:text-xl mb-6">
+              Mencetak Tenaga Kesehatan Profesional, Berprestasi & Siap Kerja!
+            </p>
+            <a
+              href="#contact"
+              class="btn-primary px-6 py-3 rounded-full font-medium inline-block"
+              >Daftar Sekarang & Dapatkan Beasiswa</a
+            >
+          </div>
+        </div>
+      </div>
+
+            <div class="slide">
+        <img
+          src="WhatsApp Image 2025-11-13 at 13.07.44_930e0df2.jpg"
+          alt="Siswa SMKS Kesehatan Yannas Husada di laboratorium farmasi"
+          class="w-full h-full object-cover"
+        />
+        <div class="slide-content">
+          <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+              PROGRAM KEAHLIAN UNGGULAN
+            </h2>
+            <p class="text-lg md:text-xl mb-6">
+              Farmasi Klinis & Komunitas, Asisten Teknik Lab Medik, dan Asisten Keperawatan & Caregiver.
+            </p>
+            <a
+              href="#program"
+              class="btn-primary px-6 py-3 rounded-full font-medium inline-block"
+              >Lihat Detail Program</a
+            >
+          </div>
+        </div>
+      </div>
+
+            <div class="slide">
+        <img
+          src="image/program2.png" 
+          alt="Siswa praktik di rumah sakit/apotek"
+          class="w-full h-full object-cover"
+        />
+        <div class="slide-content">
+          <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+              JARINGAN KERJA SAMA LUAS
+            </h2>
+            <p class="text-lg md:text-xl mb-6">
+              Bekerja sama dengan Rumah Sakit, Apotek, Laboratorium, dan Instansi Luar Negeri.
+            </p>
+            <a
+              href="#career"
+              class="btn-primary px-6 py-3 rounded-full font-medium inline-block"
+              >Lihat Mitra Kami</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-dots">
+        <div class="nav-dot active" data-slide="0"></div>
+        <div class="nav-dot" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+      </div>
+    </section>
+
+        <section id="program" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+            Program Keahlian SMKS Yannas Husada
+          </h2>
+          <div
+            class="section-divider mx-auto my-4 w-24 h-1 bg-teal-600 rounded-full"
+          ></div>
+          <p class="text-gray-600 max-w-4xl mx-auto">
+            Fokus pada kompetensi praktis dan profesionalisme di dunia kerja kesehatan.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+            class="bg-white rounded-lg p-6 shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-primary"
+            data-aos="fade-right"
+          >
+            <div class="text-primary text-5xl mb-4 text-center">
+              <i class="fas fa-pills"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+              Farmasi Klinis & Komunitas
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Mempersiapkan tenaga teknis yang kompeten dalam peracikan obat, pelayanan kefarmasian di apotek dan rumah sakit, serta konseling obat.
+            </p>
+            <p class="font-semibold text-gray-700">Prospek Karir:</p>
+            <ul class="text-sm text-gray-600 list-disc list-inside ml-2">
+              <li>Asisten Tenaga Kefarmasian di Apotek</li>
+              <li>Asisten Tenaga Kefarmasian di Rumah Sakit/Puskesmas</li>
+              <li>Asisten Tenaga Kefarmasian di Industri Farmasi</li>
+            </ul>
+          </div>
+
+                    <div
+            class="bg-white rounded-lg p-6 shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-primary"
+            data-aos="fade-up"
+          >
+            <div class="text-primary text-5xl mb-4 text-center">
+              <i class="fas fa-vial"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+              Asisten Teknik Laboratorium Medik
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Fokus pada pengambilan sampel, pemeriksaan laboratorium sederhana (darah, urin, dll.), dan pemeliharaan alat lab kesehatan.
+            </p>
+            <p class="font-semibold text-gray-700">Prospek Karir:</p>
+            <ul class="text-sm text-gray-600 list-disc list-inside ml-2">
+              <li>Asisten Tenaga Laboratorium Medik di Klinik/RS</li>
+              <li>Tenaga Teknik di Laboratorium Kesehatan Swasta</li>
+              <li>Asisten Analis Kesehatan</li>
+            </ul>
+          </div>
+
+                    <div
+            class="bg-white rounded-lg p-6 shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-primary"
+            data-aos="fade-left"
+          >
+            <div class="text-primary text-5xl mb-4 text-center">
+              <i class="fas fa-hand-holding-heart"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+              Asisten Keperawatan & Caregiver
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Melatih keterampilan dasar keperawatan, merawat pasien di rumah sakit, dan menjadi caregiver profesional di dalam maupun luar negeri.
+            </p>
+            <p class="font-semibold text-gray-700">Prospek Karir:</p>
+            <ul class="text-sm text-gray-600 list-disc list-inside ml-2">
+              <li>Asisten Perawat di Rumah Sakit/Klinik</li>
+              <li>Caregiver Lansia/Berkebutuhan Khusus</li>
+              <li>Tenaga Caregiver di Luar Negeri (Jepang, Jerman, dll.)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section id="facility" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+            Fasilitas Laboratorium Kesehatan
+          </h2>
+          <div
+            class="section-divider mx-auto my-4 w-24 h-1 bg-teal-600 rounded-full"
+          ></div>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Fasilitas praktik yang lengkap dan modern untuk menunjang kompetensi siswa.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div
+            class="bg-gray-50 rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 duration-300 ease-out"
+            data-aos="zoom-in-up"
+          >
+            <div class="text-primary text-3xl mr-4 mt-1">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Laboratorium Farmakognosi
+              </h3>
+              <p class="text-gray-600">
+                Praktik pengenalan dan pengolahan bahan alam untuk obat.
+              </p>
+            </div>
+          </div>
+
+                    <div
+            class="bg-gray-50 rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 duration-300 ease-out"
+            data-aos="zoom-in-up"
+            data-aos-delay="100"
+          >
+            <div class="text-primary text-3xl mr-4 mt-1">
+              <i class="fas fa-bong"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Lab Farmasetika</h3>
+              <p class="text-gray-600">
+                Praktik peracikan dan pembuatan sediaan farmasi.
+              </p>
+            </div>
+          </div>
+
+                    <div
+            class="bg-gray-50 rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 duration-300 ease-out"
+            data-aos="zoom-in-up"
+            data-aos-delay="200"
+          >
+            <div class="text-primary text-3xl mr-4 mt-1">
+              <i class="fas fa-cash-register"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Lab Simulasi Apotek</h3>
+              <p class="text-gray-600">
+                Ruang praktik pelayanan kefarmasian dan konseling obat.
+              </p>
+            </div>
+          </div>
+          
+                    <div
+            class="bg-gray-50 rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 duration-300 ease-out"
+            data-aos="zoom-in-up"
+          >
+            <div class="text-primary text-3xl mr-4 mt-1">
+              <i class="fas fa-bed"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Laboratorium Keperawatan
+              </h3>
+              <p class="text-gray-600">
+                Ruang praktik tindakan keperawatan dasar dengan alat peraga (phantom) lengkap.
+              </p>
+            </div>
+          </div>
+
+                    <div
+            class="bg-gray-50 rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 duration-300 ease-out"
+            data-aos="zoom-in-up"
+            data-aos-delay="100"
+          >
+            <div class="text-primary text-3xl mr-4 mt-1">
+              <i class="fas fa-microscope"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">
+                Laboratorium Kimia Analis & Lab Medik
+              </h3>
+              <p class="text-gray-600">
+                Peralatan lengkap untuk analisis kimia dan pemeriksaan sampel medis (urine, darah).
+              </p>
+            </div>
+          </div>
+
+                    <div
+            class="bg-gray-50 rounded-lg p-6 shadow-md flex items-start transition-transform transform hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 duration-300 ease-out"
+            data-aos="zoom-in-up"
+            data-aos-delay="200"
+          >
+            <div class="text-primary text-3xl mr-4 mt-1">
+              <i class="fas fa-laptop-medical"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Lab Komputer & SIMKES</h3>
+              <p class="text-gray-600">
+                Komputer modern untuk mendukung Sistem Informasi Manajemen Kesehatan (SIMKES).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section id="career" class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+            Jaringan Kerja Sama & Serapan Lulusan
+          </h2>
+          <div
+            class="section-divider mx-auto my-4 w-24 h-1 bg-teal-600 rounded-full"
+          ></div>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Lulusan SMKS Kesehatan Yannas Husada terserap di berbagai institusi kesehatan terkemuka.
+          </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="lg:w-1/2" data-aos="fade-right">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-handshake text-accent mr-3"></i> Mitra Kerja Sama
+            </h3>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <ul class="text-gray-700 space-y-3 columns-1 sm:columns-2">
+                <li><i class="fas fa-hospital text-primary mr-2"></i> RSUD Syarifah Ambami Rato Ebu</li>
+                <li><i class="fas fa-hospital text-primary mr-2"></i> RSUD dr. Moh Zyn Sampang</li>
+                <li><i class="fas fa-clinic-medical text-primary mr-2"></i> RSIA Aisyiyah</li>
+                <li><i class="fas fa-hospital-alt text-primary mr-2"></i> RS Anna Medika Madura</li>
+                <li><i class="fas fa-clinic-medical text-primary mr-2"></i> Heart and Surgery Hospital</li>
+                <li><i class="fas fa-pills text-primary mr-2"></i> Apotek Kimia Farma, K24, Se-Madura</li>
+                <li><i class="fas fa-flask text-primary mr-2"></i> Laboratorium Fortuna</li>
+                <li><i class="fas fa-globe text-primary mr-2"></i> PT. Koba Mirai Japan (Kerja ke Luar Negeri)</li>
+              </ul>
+            </div>
+          </div>
+
+                    <div class="lg:w-1/2" data-aos="fade-left">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+              <i class="fas fa-user-tie text-accent mr-3"></i> Serapan Alumni
+            </h3>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <ul class="text-gray-700 space-y-3">
+                <li><i class="fas fa-briefcase text-primary mr-2"></i> Bekerja di Apotek, Rumah Sakit, dan Puskesmas.</li>
+                <li><i class="fas fa-plane-departure text-primary mr-2"></i> Bekerja sebagai Caregiver di Luar Negeri (Jepang & Jerman).</li>
+                <li><i class="fas fa-graduation-cap text-primary mr-2"></i> Melanjutkan Kuliah ke Perguruan Tinggi Kesehatan (Poltekkes, dll).</li>
+                <li><i class="fas fa-store text-primary mr-2"></i> Berwirausaha di bidang kesehatan dan kecantikan.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+            Prestasi dan Kegiatan Sekolah
+          </h2>
+          <div class="section-divider"></div>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Bukti keunggulan siswa SMKS Kesehatan Yannas Husada
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="overflow-hidden rounded-lg">
+            <img
+              src="WhatsApp Image 2025-11-13 at 13.07.22_628319f1.jpg"
+              alt="Siswa berprestasi dengan piala dan penghargaan"
+              class="w-full h-48 object-cover object-top hover:scale-110 transition duration-300"
+            />
+          </div>
+
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="image/program3.jpg"
+              alt="Siswa praktik di laboratorium kesehatan"
+              class="w-full h-48 object-cover hover:scale-110 transition duration-300"
+            />
+          </div>
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="image/galeri6.jpg"
+              alt="Kegiatan ekstrakurikuler Pramuka atau PMR"
+              class="w-full h-48 object-cover hover:scale-110 transition duration-300"
+            />
+          </div>
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="image/galeri3.jpeg"
+              alt="Kegiatan keagamaan siswa"
+              class="w-full h-48 object-cover hover:scale-110 transition duration-300"
+            />
+          </div>
+        </div>
+
+        <div class="text-center mt-8">
+          <a
+            href="#"
+            class="btn-primary px-6 py-3 rounded-full font-medium inline-block"
+            >Seluruh Prestasi Siswa</a
+          >
+        </div>
+      </div>
+    </section>
+
+        <section id="contact" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+            Informasi Pendaftaran Siswa Baru
+          </h2>
+          <div class="section-divider"></div>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            Ayo bergabung dengan SMKS Kesehatan Yannas Husada!
+          </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="lg:w-1/2 space-y-6" data-aos="fade-right">
+            <div class="bg-white p-8 rounded-lg shadow-md">
+              <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-headset text-accent mr-3"></i> Narahubung PMB
+              </h3>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <div class="text-primary text-xl mr-4">
+                    <i class="fas fa-user"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Admin Pendaftaran</h4>
+                    <a href="tel:082229222009" class="text-gray-600 hover:text-primary">0822 2922 2009 (Admin)</a>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="text-primary text-xl mr-4">
+                    <i class="fas fa-hand-holding-usd"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Info Pembiayaan</h4>
+                    <a href="tel:081331313103" class="text-gray-600 hover:text-primary">0813 3131 3103 (Ibu Anis)</a>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="text-primary text-xl mr-4 mt-1">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Alamat Sekolah</h4>
+                    <p class="text-gray-600">
+                      Jl. Letnan Singosastro No. 3 Kraton Bangkalan Jawa Timur
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+                    <div class="lg:w-1/2" data-aos="fade-left">
+            <div class="bg-white p-8 rounded-lg shadow-md">
+              <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-calendar-alt text-accent mr-3"></i> Jadwal Pendaftaran
+              </h3>
+              <div class="space-y-4 mb-6">
+                <div class="bg-primary/10 p-4 rounded-lg">
+                  <h4 class="font-bold text-primary mb-1">JALUR AFIRMASI</h4>
+                  <p class="text-sm text-gray-700">20 Oktober 2025 - 28 Februari 2026</p>
+                </div>
+                <div class="bg-accent/10 p-4 rounded-lg">
+                  <h4 class="font-bold text-accent mb-1">JALUR REGULER</h4>
+                  <p class="text-sm text-gray-700">1 Maret 2026 - 30 Juni 2026</p>
+                </div>
+              </div>
+              
+              <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-gift text-accent mr-3"></i> Program Khusus
+              </h3>
+              <ul class="text-gray-700 space-y-2 mb-6">
+                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Cash back Rp 1 Juta</li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Beasiswa Yatim, Piatu, Fakir Miskin, dan Berprestasi</li>
+                <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Program Pendampingan Karir (Bekerja dan Wirausaha)</li>
+              </ul>
+
+              <a
+                href="whatsapp://send?phone=082229222009&text=Halo%20Admin%20Yannas%20Husada,%20saya%20tertarik%20mendaftar%20siswa%20baru."
+                class="btn-secondary px-6 py-3 rounded-full font-bold w-full text-center inline-flex items-center justify-center"
+              >
+                <i class="fab fa-whatsapp text-2xl mr-2"></i> Daftar Via WhatsApp!
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <footer class="py-8 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <p class="mb-4">
+          SMKS KESEHATAN YANNAS HUSADA BANGKALAN
+        </p>
+        <div class="flex justify-center space-x-6 mb-4">
+          <a href="https://instagram.com/smkkesehatanyannas" target="_blank" class="text-gray-400 hover:text-accent transition duration-300">
+            <i class="fab fa-instagram text-2xl"></i>
+          </a>
+          <a href="mailto:smkkesehatanyannas@gmail.com" class="text-gray-400 hover:text-accent transition duration-300">
+            <i class="fas fa-envelope text-2xl"></i>
+          </a>
+          <a href="https://www.tiktok.com/@smkkesyannashusadabkl" target="_blank" class="text-gray-400 hover:text-accent transition duration-300">
+            <i class="fab fa-tiktok text-2xl"></i>
+          </a>
+        </div>
+        <p class="text-sm text-gray-500">
+          &copy; 2025 SMKS Kesehatan Yannas Husada Bangkalan. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+        <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".nav-dot");
+
+      function showSlide(index) {
+        slides.forEach((slide) => slide.classList.remove("active"));
+        dots.forEach((dot) => dot.classList.remove("active"));
+
+        if (index >= slides.length) {
+          currentSlide = 0;
+        } else if (index < 0) {
+          currentSlide = slides.length - 1;
+        } else {
+          currentSlide = index;
+        }
+
+        slides[currentSlide].classList.add("active");
+        dots[currentSlide].classList.add("active");
+      }
+
+      function nextSlide() {
+        showSlide(currentSlide + 1);
+      }
+
+      // Otomatis Ganti Slide setiap 5 detik
+      setInterval(nextSlide, 5000);
+
+      // Navigasi Dot
+      dots.forEach((dot) => {
+        dot.addEventListener("click", function () {
+          showSlide(parseInt(this.getAttribute("data-slide")));
+        });
+      });
+    </script>
+
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800, // Durasi animasi
+        once: true,  // Hanya menjalankan animasi sekali
+      });
+    </script>
+  </body>
 </html>
