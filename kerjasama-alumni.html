@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kerja Sama & Alumni - SMKS Kesehatan Yannas Husada</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="image/imglogo.png" alt="Logo SMKS Kesehatan Yannas Husada" class="mr-3" width="50" height="50" />
+                <div>
+                    <h1 class="text-lg font-bold text-gray-800">SMKS KES. YANNAS HUSADA</h1>
+                    <p class="text-xs text-gray-600">Bangkalan - Sekolah Unggul Bidang Kesehatan</p>
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-800 hover:text-teal-700 font-medium">Beranda</a>
+                <a href="program.html" class="text-gray-800 hover:text-teal-700 font-medium">Program Keahlian</a>
+                <a href="fasilitas.html" class="text-gray-800 hover:text-teal-700 font-medium">Fasilitas</a>
+                <a
+                    href="kerjasama-alumni.html"
+                    class="text-primary hover:text-teal-700 font-medium border-b-2 border-primary"
+                    >Kerja Sama & Alumni</a
+                >
+                <a href="kontak-pmb.html" class="text-gray-800 hover:text-teal-700 font-medium">Kontak PMB</a>
+            </div>
+            <button id="menu-toggle" class="md:hidden text-gray-800 focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+            <a href="index.html" class="block py-2 text-gray-800 hover:text-teal-700 font-medium">Beranda</a>
+            <a href="program.html" class="block py-2 text-gray-800 hover:text-teal-700 font-medium">Program Keahlian</a>
+            <a href="fasilitas.html" class="block py-2 text-gray-800 hover:text-teal-700 font-medium">Fasilitas</a>
+            <a href="kerjasama-alumni.html" class="block py-2 text-primary hover:text-teal-700 font-medium">Kerja Sama & Alumni</a>
+            <a href="kontak-pmb.html" class="block py-2 text-gray-800 hover:text-teal-700 font-medium">Kontak PMB</a>
+        </div>
+    </nav>
+    <script>
+        document
+          .getElementById("menu-toggle")
+          .addEventListener("click", function () {
+            const mobileMenu = document.getElementById("mobile-menu");
+            mobileMenu.classList.toggle("hidden");
+          });
+    </script>
+
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-aos="fade-up">
+                    Jaringan Kerja Sama & Serapan Lulusan
+                </h2>
+                <div
+                    class="section-divider mx-auto my-4 w-24 h-1 bg-teal-600 rounded-full"
+                ></div>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                    Lulusan SMKS Kesehatan Yannas Husada terserap di berbagai institusi kesehatan terkemuka.
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-handshake text-accent mr-3"></i> Mitra Kerja Sama
+                    </h3>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <ul class="text-gray-700 space-y-3 columns-1 sm:columns-2">
+                            <li><i class="fas fa-hospital text-primary mr-2"></i> RSUD Syarifah Ambami Rato Ebu</li>
+                            <li><i class="fas fa-hospital text-primary mr-2"></i> RSUD dr. Moh Zyn Sampang</li>
+                            <li><i class="fas fa-clinic-medical text-primary mr-2"></i> RSIA Aisyiyah</li>
+                            <li><i class="fas fa-hospital-alt text-primary mr-2"></i> RS Anna Medika Madura</li>
+                            <li><i class="fas fa-clinic-medical text-primary mr-2"></i> Heart and Surgery Hospital</li>
+                            <li><i class="fas fa-pills text-primary mr-2"></i> Apotek Kimia Farma, K24, Se-Madura</li>
+                            <li><i class="fas fa-flask text-primary mr-2"></i> Laboratorium Fortuna</li>
+                            <li><i class="fas fa-globe text-primary mr-2"></i> PT. Koba Mirai Japan (Kerja ke Luar Negeri)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-user-tie text-accent mr-3"></i> Serapan Alumni
+                    </h3>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <ul class="text-gray-700 space-y-3">
+                            <li><i class="fas fa-briefcase text-primary mr-2"></i> Bekerja di Apotek, Rumah Sakit, dan Puskesmas.</li>
+                            <li><i class="fas fa-plane-departure text-primary mr-2"></i> Bekerja sebagai Caregiver di Luar Negeri (Jepang & Jerman).</li>
+                            <li><i class="fas fa-graduation-cap text-primary mr-2"></i> Melanjutkan Kuliah ke Perguruan Tinggi Kesehatan (Poltekkes, dll).</li>
+                            <li><i class="fas fa-store text-primary mr-2"></i> Berwirausaha di bidang kesehatan dan kecantikan.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">SMKS KESEHATAN YANNAS HUSADA BANGKALAN</p>
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://instagram.com/smkkesehatanyannas" target="_blank" class="text-gray-400 hover:text-accent transition duration-300"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="mailto:smkkesehatanyannas@gmail.com" class="text-gray-400 hover:text-accent transition duration-300"><i class="fas fa-envelope text-2xl"></i></a>
+                <a href="https://www.tiktok.com/@smkkesyannashusadabkl" target="_blank" class="text-gray-400 hover:text-accent transition duration-300"><i class="fab fa-tiktok text-2xl"></i></a>
+            </div>
+            <p class="text-sm text-gray-500">&copy; 2025 SMKS Kesehatan Yannas Husada Bangkalan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 800, once: true });
+    </script>
+</body>
+</html>
